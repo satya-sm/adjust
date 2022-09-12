@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: adjust-app
+spec:
+  selector:
+    matchLabels:
+      app: adjust-app
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: adjust-app
+    spec:
+      containers:
+      - name: adjust-app
+        image: adjust:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 5000
+          protocol: TCP
